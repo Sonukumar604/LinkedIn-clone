@@ -7,5 +7,5 @@ public interface PostLikeRepository extends JpaRepository<PostLike, Long> {
     boolean existsByIdAndPostId(Long userId, Long postId);
 
     void deleteByUserIdAndPostId(Long userId, Long postId);
-    // You can define custom query methods here if needed
+
 }
