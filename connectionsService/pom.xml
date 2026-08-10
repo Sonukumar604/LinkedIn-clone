@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.0</version>
+		<version>3.2.5</version>
 		<relativePath/>
 	</parent>
 
@@ -21,8 +21,8 @@
 	<description>LinkedIn Clone Connections Service</description>
 
 	<properties>
-		<java.version>26</java.version>
-		<spring-cloud.version>2025.1.2</spring-cloud.version>
+		<java.version>17</java.version>
+		<spring-cloud.version>2023.0.4</spring-cloud.version>
 	</properties>
 
 	<!-- ====================== -->

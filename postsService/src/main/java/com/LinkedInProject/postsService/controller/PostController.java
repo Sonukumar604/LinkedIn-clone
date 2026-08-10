@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/posts/core")
+@RequestMapping("/core")
 public class PostController {
 
     private final PostService postService;
@@ -30,9 +30,9 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public ResponseEntity<List<PostDto>> getPost(@PathVariable Long postId, @RequestHeader("X-User-Id") Long userId){
+    public ResponseEntity<PostDto> getPost(@PathVariable Long postId, @RequestHeader("X-User-Id") Long userId){
         PostDto postDto = postService.getPostById(postId);
-        return ResponseEntity.ok(List.of(postDto));
+        return ResponseEntity.ok(postDto);
     }
 
     @GetMapping("/users/{userId}/allPosts")
