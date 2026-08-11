@@ -1,5 +1,8 @@
 package com.LinkedInProject.postsService.service;
 
+import com.LinkedInProject.postsService.auth.AuthContextHolder;
+import com.LinkedInProject.postsService.client.ConnectionsServiceClient;
+import com.LinkedInProject.postsService.dto.PersonDto;
 import com.LinkedInProject.postsService.dto.PostCreateRequestDto;
 import com.LinkedInProject.postsService.dto.PostDto;
 import com.LinkedInProject.postsService.entity.Post;
@@ -20,6 +23,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
+    private final ConnectionsServiceClient connectionsServiceClient;
 
 
     public PostDto createPost(PostCreateRequestDto postCreateRequestDto, Long userId) {
@@ -32,7 +36,15 @@ public class PostService {
 
     public PostDto getPostById(Long postId) {
         log.info("Getting post with ID: {}", postId);
+        Long userId = AuthContextHolder.getCurrentUserId();
+        List<PersonDto> personDtoList = connectionsServiceClient.getFirstDegreeConnections(userId);
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post not found with ID: " + postId));
+        boolean isOwnPost = post.getUserId().equals(userId);
+        boolean isFirstDegreePost = personDtoList.stream()
+                .anyMatch(personDto -> personDto.getUserId().equals(post.getUserId()));
+        if (!isOwnPost && !isFirstDegreePost) {
+            throw new ResourceNotFoundException("Post not found with ID: " + postId);
+        }
         return modelMapper.map(post, PostDto.class);
     }
 

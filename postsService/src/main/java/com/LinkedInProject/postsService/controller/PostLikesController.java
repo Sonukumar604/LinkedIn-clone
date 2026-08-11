@@ -7,7 +7,7 @@ import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/v1/posts/likes")
+@RequestMapping("/likes")
 @RequiredArgsConstructor
 @RestController
 public class PostLikesController {
