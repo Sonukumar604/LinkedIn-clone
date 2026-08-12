@@ -1,4 +1,5 @@
-package com.LinkedInProject.postsService.auth;
+package com.LinkedInProject.connectionsService.auth;
+import com.LinkedInProject.postsService.auth.AuthContextHolder;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.stereotype.Component;
