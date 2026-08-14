@@ -1,6 +1,6 @@
 
 server:
-  port: 8080
+  port: 9000
 
 eureka:
   client:
@@ -14,12 +14,8 @@ jwt:
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.gateway.filter: DEBUG
-    org.springframework.cloud.gateway.handler: DEBUG
-    org.springframework.cloud.loadbalancer: DEBUG
-    reactor.netty.http.client: DEBUG
-    org.springframework.boot.context.config: TRACE
+    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.loadbalancer: INFO
 
 management:
   endpoint:

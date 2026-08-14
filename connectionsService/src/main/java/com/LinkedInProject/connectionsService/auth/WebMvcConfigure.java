@@ -1,6 +1,5 @@
 package com.LinkedInProject.connectionsService.auth;
 
-import com.LinkedInProject.postsService.auth.RequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
