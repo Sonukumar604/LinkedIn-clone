@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="NotificationsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="notificationsService" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.LinkedInProject.notificationsService.NotificationsServiceApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.LinkedInProject.notificationsService.notification_service.consumer.NotificationsServiceApplication" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

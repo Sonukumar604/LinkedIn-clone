@@ -1,4 +1,4 @@
-package com.LinkedInProject.notificationsService;
+package com.LinkedInProject.notificationsService.notification_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
