@@ -28,10 +28,6 @@ public class PostService {
     private final ConnectionsServiceClient connectionsServiceClient;
     private final KafkaTemplate<Long, PostCreated> postCreatedKafkaTemplate;
 
-
-
-
-
     public PostDto createPost(PostCreateRequestDto postCreateRequestDto, Long userId) {
         log.info("Creating post for user with id: {}", userId);
         Post post = modelMapper.map(postCreateRequestDto, Post.class);
@@ -46,9 +42,8 @@ public class PostService {
                     .ownerUserId(userId)
                     .content(post.getContent())
                     .build();
-            postCreatedKafkaTemplate.send("post_created_topics", postCreated);
+            postCreatedKafkaTemplate.send("post_created_topic", postCreated);
         }
-
         return modelMapper.map(post, PostDto.class);
     }
 

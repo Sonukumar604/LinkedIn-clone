@@ -1,4 +1,3 @@
-
 server:
   port: 9000
 
@@ -11,11 +10,10 @@ jwt:
   secret:
     key: iloveyoukhushiiloveyousomuchiloveyouiloveyouiloveyouyouaremyeverythinglpgo4k[plv'lmberokgmietbonryojneoimgrtbmm
 
-
 logging:
   level:
-    org.springframework.cloud.gateway: INFO
-    org.springframework.cloud.loadbalancer: INFO
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
 
 management:
   endpoint:
@@ -34,14 +32,14 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://user-service
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/api/v1/users/**
           filters:
             - StripPrefix=2
 
         - id: posts-service
-          uri: lb://posts-service
+          uri: lb://POSTS-SERVICE
           predicates:
             - Path=/api/v1/posts/**
           filters:
@@ -49,9 +47,17 @@ spring:
             - AuthenticationFilter
 
         - id: connections-service
-          uri: lb://connections-service
+          uri: lb://CONNECTIONS-SERVICE
           predicates:
             - Path=/api/v1/connections/**
+          filters:
+            - StripPrefix=2
+            - AuthenticationFilter
+
+        - id: notifications-service
+          uri: lb://NOTIFICATIONS-SERVICE
+          predicates:
+            - Path=/api/v1/notifications/**
           filters:
             - StripPrefix=2
             - AuthenticationFilter
