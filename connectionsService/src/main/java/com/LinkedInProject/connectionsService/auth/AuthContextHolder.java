@@ -1,17 +1,17 @@
 package com.LinkedInProject.connectionsService.auth;
 
 public class AuthContextHolder {
-    public static final ThreadLocal<Long> currentUserId = new ThreadLocal<>();
+    private static final ThreadLocal<Long> currentUserId = new ThreadLocal<>();
 
-    public static Long getCurrentUserId(){
+    public static Long getCurrentUserId() {
         return currentUserId.get();
     }
 
-    static void setCurrentUserId(Long userId){
+    public static void setCurrentUserId(Long userId) {
         currentUserId.set(userId);
     }
 
-    static void clear(){
+    public static void clear() {
         currentUserId.remove();
     }
 }
