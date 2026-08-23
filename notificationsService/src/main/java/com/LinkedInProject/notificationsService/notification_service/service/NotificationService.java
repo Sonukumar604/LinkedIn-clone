@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class NotificationService {
 
     private final NotificationRepository notificationRepository;
+
     public void addNotification(Notification notification){
         log.info("Adding notification to db, message: {}", notification.getMessage());
         notification = notificationRepository.save(notification);
