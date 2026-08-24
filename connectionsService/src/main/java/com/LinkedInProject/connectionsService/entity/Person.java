@@ -1,41 +1,23 @@
 package com.LinkedInProject.connectionsService.entity;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
 
-@Node
+@Node("Person")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Person {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private Long userId; // Acts as primary ID from UserService
 
-    private Long userId;
-
+    @Property("name")
     private String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
