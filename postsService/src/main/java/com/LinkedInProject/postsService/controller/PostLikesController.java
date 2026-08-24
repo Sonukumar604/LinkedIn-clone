@@ -19,12 +19,9 @@ public class PostLikesController {
         postLikeService.likePost(postId);
         return ResponseEntity.noContent().build();
     }
-
     @DeleteMapping("/{postId}")
     public ResponseEntity<Void> unlikePost(@PathVariable Long postId){
         postLikeService.unlikePost(postId);
         return ResponseEntity.noContent().build();
     }
-
-
 }

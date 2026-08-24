@@ -56,12 +56,13 @@ public class PostsConsumer {
 
         log.info("Received PostLiked event: {}", postLiked);
 
-        String message = String.format("Your connection with id: %d liked your post with id: %d",
-                postLiked.getOwnerUserId(), postLiked.getPostId());
+
+        String message = String.format("User %d liked your post %d",
+                postLiked.getLikedByUserId(), postLiked.getPostId());
 
         Notification notification = Notification.builder()
                 .message(message)
-                .userId(postLiked.getOwnerUserId())
+                .userId(postLiked.getOwnerUserId()) // Recipient of notification
                 .build();
 
         notificationService.addNotification(notification);

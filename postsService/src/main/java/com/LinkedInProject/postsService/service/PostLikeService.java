@@ -43,7 +43,7 @@ public class PostLikeService {
                 .ownerUserId(post.getUserId())
                 .likedByUserId(userId)
                 .build();
-        postLikedKafkaTemplate.send("post_liked_topics", postLiked);
+        postLikedKafkaTemplate.send("post_liked_topic", postLiked);
     }
 
     @Transactional
