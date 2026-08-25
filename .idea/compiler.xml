@@ -12,15 +12,7 @@
         <module name="DiscoveryServer" />
         <module name="connectionsService" />
         <module name="APIGateway" />
-      </profile>
-      <profile name="Annotation profile for postsService" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
-        <module name="postsService" />
+        <module name="uploader-service" />
       </profile>
       <profile name="Annotation profile for userService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -32,6 +24,15 @@
         <module name="notificationsService" />
         <module name="userService" />
       </profile>
+      <profile name="Annotation profile for uploader-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="postsService" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
@@ -41,6 +42,7 @@
       <module name="connectionsService" options="-parameters" />
       <module name="notificationsService" options="-parameters" />
       <module name="postsService" options="-parameters" />
+      <module name="uploader-service" options="-parameters" />
       <module name="userService" options="-parameters" />
     </option>
   </component>
