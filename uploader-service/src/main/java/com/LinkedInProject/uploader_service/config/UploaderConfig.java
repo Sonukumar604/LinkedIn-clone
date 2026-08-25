@@ -1,4 +1,4 @@
-package com.LinkedInProject.uploader_service.service.config;
+package com.LinkedInProject.uploader_service.config;
 
 import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Value;
