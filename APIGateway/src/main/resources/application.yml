@@ -15,14 +15,7 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.cloud.loadbalancer: DEBUG
 
-management:
-  endpoint:
-    gateway:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health,gateway
+
 
 spring:
   application:
@@ -35,14 +28,14 @@ spring:
           enabled: true
       routes:
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
           predicates:
             - Path=/api/v1/users/**
           filters:
             - StripPrefix=2
 
         - id: posts-service
-          uri: lb://POSTS-SERVICE
+          uri: ${POSTS_SERVICE_URI:lb://POSTS-SERVICE}
           predicates:
             - Path=/api/v1/posts/**
           filters:
@@ -50,7 +43,7 @@ spring:
             - AuthenticationFilter
 
         - id: connections-service
-          uri: lb://CONNECTIONS-SERVICE
+          uri: ${CONNECTIONS_SERVICE_URI:lb://CONNECTIONS-SERVICE}
           predicates:
             - Path=/api/v1/connections/**
           filters:
@@ -58,7 +51,7 @@ spring:
             - AuthenticationFilter
 
         - id: notifications-service
-          uri: lb://NOTIFICATIONS-SERVICE
+          uri: ${NOTIFICATION_SERVICE_URI:lb://NOTIFICATIONS-SERVICE}
           predicates:
             - Path=/api/v1/notifications/**
           filters:
