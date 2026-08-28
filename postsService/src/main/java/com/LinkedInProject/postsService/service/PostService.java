@@ -36,15 +36,25 @@ public class PostService {
         Long userId = AuthContextHolder.getCurrentUserId();
         log.info("Creating post for user with id: {}", userId);
 
-        ResponseEntity<String> imageUrl = uploaderServiceClient.uploadFile(file);
+        String imageUrl = null;
+        if (file != null && !file.isEmpty()) {
+            log.info("Uploading media file via UploaderServiceClient...");
+            ResponseEntity<String> response = uploaderServiceClient.uploadFile(file);
+            if (response != null && response.getBody() != null) {
+                imageUrl = response.getBody();
+            }
+        }
 
         Post post = modelMapper.map(postCreateRequestDto, Post.class);
         post.setUserId(userId);
-        post.setImageUrl(imageUrl.getBody());
+        post.setImageUrl(imageUrl);
+
         post = postRepository.save(post);
+        log.info("Post saved with ID: {}", post.getId());
+
         List<PersonDto> personDtoList = connectionsServiceClient.getFirstDegreeConnections(userId);
 
-        for(PersonDto person: personDtoList){
+        for (PersonDto person : personDtoList) {
             PostCreated postCreated = PostCreated.builder()
                     .postId(post.getId())
                     .userId(person.getUserId())
@@ -53,6 +63,7 @@ public class PostService {
                     .build();
             postCreatedKafkaTemplate.send("post_created_topic", postCreated);
         }
+
         return modelMapper.map(post, PostDto.class);
     }
 
@@ -60,13 +71,18 @@ public class PostService {
         log.info("Getting post with ID: {}", postId);
         Long userId = AuthContextHolder.getCurrentUserId();
         List<PersonDto> personDtoList = connectionsServiceClient.getFirstDegreeConnections(userId);
-        Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post not found with ID: " + postId));
+
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post not found with ID: " + postId));
+
         boolean isOwnPost = post.getUserId().equals(userId);
         boolean isFirstDegreePost = personDtoList.stream()
                 .anyMatch(personDto -> personDto.getUserId().equals(post.getUserId()));
+
         if (!isOwnPost && !isFirstDegreePost) {
             throw new ResourceNotFoundException("Post not found with ID: " + postId);
         }
+
         return modelMapper.map(post, PostDto.class);
     }
 
@@ -74,7 +90,7 @@ public class PostService {
         log.info("Getting all the posts of a user with ID: {}", userId);
         List<Post> postList = postRepository.findByUserId(userId);
         return postList.stream()
-                .map((element) -> modelMapper.map(element, PostDto.class))
+                .map(element -> modelMapper.map(element, PostDto.class))
                 .collect(Collectors.toList());
     }
 }
