@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: posts-service
-        image: sonukumar21/linkedin-app-posts-service/general
+        image: sonukumar21/linkedin-app-posts-service:latest
         resources:
           limits:
             memory: "400Mi"
@@ -27,9 +27,9 @@ spec:
         - name: DB_URL
           value: jdbc:postgresql://posts-db:5432/postsDB
         - name: DB_USERNAME
-          value: user
+          value: postgres
         - name: DB_PASSWORD
-          value: password
+          value: khushi
         ports:
         - containerPort: 9010
 
