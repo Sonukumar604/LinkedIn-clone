@@ -12,26 +12,24 @@ spec:
     metadata:
       labels:
         app: user-db
-        
     spec:
       containers:
       - name: user-db
-      
         image: postgres:16
         resources:
           limits:
-              memory: "200Mi"
-              cpu: "200m"
+            memory: "200Mi"
+            cpu: "200m"
           requests:
             memory: "100Mi"
             cpu: "100m"
         env:
           - name: POSTGRES_USER
-            value: user
+            value: postgres
           - name: POSTGRES_PASSWORD
-            value: password
+            value: khushi
           - name: POSTGRES_DB
-            value: postsDB
+            value: userDB
           - name: PGDATA
             value: /var/lib/postgresql/data/pgdata
         ports:
@@ -47,7 +45,7 @@ spec:
       resources:
         requests:
           storage: 1Gi
-      storageClassName: "standard-rwo" 
+      storageClassName: "standard-rwo"
       volumeMode: Filesystem
 
 ---
@@ -56,12 +54,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: user-db
-  
 spec:
   clusterIP: None
   selector:
     app: user-db
-    
   ports:
-  - port: 80
+  - port: 5432
     targetPort: 5432
