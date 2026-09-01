@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: posts-service
-        image: sonukumar21/linkedin-app-posts-service:latest
+        image: linkedin-app-posts-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
         resources:
           limits:
             memory: "400Mi"
@@ -24,11 +24,11 @@ spec:
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: k8s
-        - name: DB_URL
+        - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://posts-db:5432/postsDB
-        - name: DB_USERNAME
+        - name: SPRING_DATASOURCE_USERNAME
           value: postgres
-        - name: DB_PASSWORD
+        - name: SPRING_DATASOURCE_PASSWORD
           value: khushi
         ports:
         - containerPort: 9010
