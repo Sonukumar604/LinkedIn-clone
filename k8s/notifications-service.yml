@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifications-service
+spec:
+  selector:
+    matchLabels:
+      app: notifications-service
+  template:
+    metadata:
+      labels:
+        app: notifications-service
+    spec:
+      containers:
+      - name: notifications-service
+        image: linkedin-app-notifications-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
+        resources:
+          limits:
+            memory: "400Mi"
+            cpu: "200m"
+          requests:
+            memory: "200Mi"
+            cpu: "100m"
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+          - name: DB_USERNAME
+            value: postgres
+          - name: DB_PASSWORD
+            value: khushi
+          - name: DB_SERVER
+            value: notification-db
+          - name: DB_NAME
+            value: notificationDB
+          - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+            value: kafka:9092
+        ports:
+        - containerPort: 9040
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notifications-service
+spec:
+  selector:
+    app: notifications-service
+  ports:
+  - port: 80
+    targetPort: 9040
