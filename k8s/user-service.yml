@@ -24,16 +24,16 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
-          - name: DB_USERNAME
-            value: postgres
-          - name: DB_PASSWORD
-            value: khushi
           - name: DB_SERVER
             value: user-db
           - name: DB_NAME
             value: userDB
+          - name: DB_USERNAME
+            value: postgres
+          - name: DB_PASSWORD
+            value: khushi
           - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-            value: kafka.kafka.svc.cluster.local:9092
+            value: kafka:9092
         ports:
         - containerPort: 9020
 
