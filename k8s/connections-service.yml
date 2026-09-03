@@ -30,8 +30,8 @@ spec:
             value: LinkedIn@2026
           - name: SPRING_NEO4J_URI
             value: bolt://connections-db:7687
-          - name: KAFKA_LOG4J_ROOT_LOGLEVEL
-            value: "ERROR"
+          - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+            value: "kafka.kafka.svc.cluster.local:9092"
         ports:
         - containerPort: 9030
 
