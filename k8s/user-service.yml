@@ -21,7 +21,7 @@ spec:
           requests:
             memory: "200Mi"
             cpu: "100m"
-      env:
+        env:
       - name: SPRING_PROFILES_ACTIVE
         value: "k8s"
       - name: SPRING_DATASOURCE_URL
