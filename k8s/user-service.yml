@@ -26,9 +26,9 @@ spec:
         value: "k8s"
       - name: SPRING_DATASOURCE_URL
         value: "jdbc:postgresql://user-db-0.user-db:5432/userDB"
-      - name: SPRING_DATASOURCE_USERNAME
+      - name: DB_USERNAME
         value: "postgres"
-      - name: SPRING_DATASOURCE_PASSWORD
+      - name: DB_PASSWORD
         value: "khushi"
       - name: SPRING_JPA_DATABASE_PLATFORM
         value: "org.hibernate.dialect.PostgreSQLDialect"
