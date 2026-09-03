@@ -24,8 +24,24 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
+          - name: CLOUDINARY_CLOUD_NAME
+            value: "xitueple"
+          - name: CLOUDINARY_API_KEY
+            value: "214731115954721"
+          - name: CLOUDINARY_API_SECRET
+            value: "mHfTD7Mm72MRym7lcbnoQ__c_LI"
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /var/secrets/google/gcp-credentials.json
+        volumeMounts:
+          - name: gcp-key-volume
+            mountPath: /var/secrets/google
+            readOnly: true
         ports:
         - containerPort: 9050
+      volumes:
+        - name: gcp-key-volume
+          secret:
+            secretName: cloudinary-gcp-creds
 
 ---
 
