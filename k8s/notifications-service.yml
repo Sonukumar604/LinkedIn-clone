@@ -28,10 +28,12 @@ spec:
             value: postgres
           - name: DB_PASSWORD
             value: khushi
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:postgresql://$(DB_SERVER):5432/$(DB_NAME)"
           - name: DB_SERVER
-            value: notification-db
+            value: "notification-db"
           - name: DB_NAME
-            value: notificationDB
+            value: "notificationDB"
           - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
             value: kafka:9092
         ports:
