@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: connections-service
-        image: anuj55149/linkedin-app-connections-service
+        image: sonukumar21/linkedin-app-connections-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
         resources:
           limits:
             memory: "400Mi"
@@ -24,12 +24,12 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
-          - name: DB_USERNAME
+          - name: SPRING_NEO4J_AUTHENTICATION_USERNAME
             value: neo4j
-          - name: DB_PASSWORD
-            value: password
-          - name: DB_NAME
-            value: connections-db
+          - name: SPRING_NEO4J_AUTHENTICATION_PASSWORD
+            value: LinkedIn@2026
+          - name: SPRING_NEO4J_URI
+            value: bolt://connections-db:7687
           - name: KAFKA_LOG4J_ROOT_LOGLEVEL
             value: "ERROR"
         ports:
