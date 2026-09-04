@@ -1,12 +1,46 @@
-eureka.client:
-  register-with-eureka: false
-  fetch-registry: false
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
 
-USER_SERVICE_URI: http://user-service
-POSTS_SERVICE_URI: http://posts-service
-CONNECTIONS_SERVICE_URI: http://connections-service
-NOTIFICATION_SERVICE_URI:  http://notification-service
-UPLOADER_SERVICE_URI: http://uploader-service
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: http://user-service:8080
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - StripPrefix=2
+        - id: posts-service
+          uri: http://posts-service:8080
+          predicates:
+            - Path=/api/v1/posts/**
+          filters:
+            - StripPrefix=2
+            - AuthenticationFilter
+        - id: connections-service
+          uri: http://connections-service:8080
+          predicates:
+            - Path=/api/v1/connections/**
+          filters:
+            - StripPrefix=2
+            - AuthenticationFilter
+        - id: notifications-service
+          uri: http://notifications-service:8080
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - StripPrefix=2
+            - AuthenticationFilter
+        - id: uploader-service
+          uri: http://uploader-service:8080
+          predicates:
+            - Path=/api/v1/uploads/**
+          filters:
+            - StripPrefix=2
+            - AuthenticationFilter
 
 management:
   endpoint:
