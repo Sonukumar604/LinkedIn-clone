@@ -1,9 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="UploaderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <envs>
-      <env name="CLOUDINARY_CLOUD_NAME" value="xitueple" />
       <env name="CLOUDINARY_API_KEY" value="214731115954721" />
       <env name="CLOUDINARY_API_SECRET" value="mHfTD7Mm72MRym7lcbnoQ__c_LI" />
+      <env name="CLOUDINARY_CLOUD_NAME" value="xitueple" />
+      <env name="SPRING_PROFILES_ACTIVE" value="k8s" />
     </envs>
     <module name="uploader-service" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.LinkedInProject.uploader_service.UploaderServiceApplication" />
