@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: sonukumar21/linkedin-app-api-gateway?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
+        image: sonukumar21/linkedin-app-api-gateway:latest
         resources:
           limits:
               memory: "500Mi"

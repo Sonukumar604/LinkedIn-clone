@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: sonukumar21/linkedin-app-user-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
+        image: sonukumar21/linkedin-app-user-service:latest
         resources:
           limits:
             memory: "400Mi"

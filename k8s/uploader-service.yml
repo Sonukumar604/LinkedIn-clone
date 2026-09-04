@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: uploader-service
-        image: linkedin-app-uploader-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
+        image: linkedin-app-uploader-service:latest
         resources:
           limits:
             memory: "400Mi"

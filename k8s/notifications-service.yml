@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: notifications-service
-        image: linkedin-app-notifications-service?uuid=8CA2F3D8-1848-4CF8-9DBA-657A8B74E080
+        image: linkedin-app-notifications-service:latest
         imagePullPolicy: Always
         resources:
           limits:
