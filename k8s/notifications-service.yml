@@ -48,6 +48,7 @@ spec:
             value: "kafka:9092"
         ports:
         - containerPort: 9040
+          name: http
 
 ---
 
@@ -59,5 +60,6 @@ spec:
   selector:
     app: notifications-service
   ports:
-  - port: 8080
-    targetPort: 9040
+  - name: http
+    port: 8080
+    targetPort: http
