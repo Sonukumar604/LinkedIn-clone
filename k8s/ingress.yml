@@ -7,6 +7,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.allow-http: "true"
+    cloud.google.com/backend-config: '{"default":"api-gateway-backend"}'
 spec:
   rules:
   - http:
@@ -18,3 +19,13 @@ spec:
             name: api-gateway
             port: 
               number: 80
+
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: api-gateway-backend
+spec:
+  healthCheck:
+    requestPath: /actuator/health
+    type: HTTP

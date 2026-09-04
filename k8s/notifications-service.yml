@@ -32,14 +32,20 @@ spec:
             value: khushi
           - name: DB_SERVER
             value: "notification-db"
+          - name: DB_PORT
+            value: "5432"
           - name: DB_NAME
             value: "notificationDB"
+          - name: SPRING_DATASOURCE_USERNAME
+            value: postgres
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: khushi
           - name: SPRING_DATASOURCE_URL
             value: "jdbc:postgresql://notification-db:5432/notificationDB"
           - name: SPRING_JPA_DATABASE_PLATFORM
             value: "org.hibernate.dialect.PostgreSQLDialect"
           - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-            value: "kafka.kafka.svc.cluster.local:9092"
+            value: "kafka:9092"
         ports:
         - containerPort: 9040
 
