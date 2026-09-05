@@ -31,7 +31,7 @@ spec:
           - name: SPRING_NEO4J_URI
             value: bolt://connections-db:7687
           - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-            value: "kafka.kafka.svc.cluster.local:9092"
+            value: "kafka:9092"
         ports:
         - containerPort: 9030
 
