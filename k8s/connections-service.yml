@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: connections-service
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: connections-service
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: connections-service
-        image: linkedin-app-connections-service:latest
+        image: sonukumar21/linkedin-app-connections-service:latest
         resources:
           limits:
             memory: "400Mi"
